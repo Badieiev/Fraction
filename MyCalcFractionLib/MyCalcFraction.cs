@@ -12,7 +12,6 @@ namespace MyCalcFractionLib
         public Fraction() { }
         public Fraction(int x, int y)
         {
-            //только числитель может быть отрицательным
            this.x = x;
 
             if (y == 0)
@@ -68,8 +67,13 @@ namespace MyCalcFractionLib
             }
             return frac.x == this.x && frac.y == this.y;
         }
-
-
+        public override int GetHashCode()
+        {
+            int hash = 3;
+            hash = (hash * 7) + x.GetHashCode();
+            hash = (hash * 7) + y.GetHashCode();
+            return hash;
+        }
 
         //public Fraction Add(Fraction oth)
         //{
