@@ -98,5 +98,36 @@ namespace MyCalcFractionLib.Tests
             //assert
             Assert.AreEqual(expected, c);
         }
+
+        [TestMethod]
+        public void Altogether1071and462return2()
+        {
+            //arrange
+            int x = 1071;
+            int y = 462;
+            int expected = 2;
+
+            //act
+            int actual =Euclid.Altogether(ref x, ref y);
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetGCD1071and462return2()
+        {
+            //arrange
+            int x = 1071;
+            int y = 462;
+            int expected = 2;
+
+            //act
+            Euclid c = new Euclid();
+            int actual = c.GetGCD(x, y);
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
