@@ -9,44 +9,57 @@ namespace MyCalcFractionLib
     public class Fraction
     {
         private int x, y;
+        public int X { get { return x; }}
+        public int Y { get { return y; }}
         public Fraction() { }
-        public Fraction(int x, int y)
+        public Fraction(int x_, int y_)
         {
-           this.x = x;
+            this.x = x_;
+            this.y = y_;
 
             if (y == 0)
             {
                 Exception ex = new Exception("Знаменатель не может быть 0");
                 throw ex;
             }
-            if (y<0)
+
+            if (y<0)    //нужно проверять на отрицательные числа?
             {
                 this.x = -x;
                 this.y = Math.Abs(y);
             }
-            else
-            {
-                this.y = y;
-            }
+
+            int GCD = Euclid.GetGCD(Math.Abs(x), Math.Abs(y)); 
+            this.y = y / GCD;
+            this.x = this.x / GCD;
         }
+
+        public int FindIntegerPart()
+        {
+            return this.x / this.y;
+        }
+
         public static Fraction Add(Fraction oth, Fraction els)
         {
             int newNumerator = oth.x * els.y + els.x * oth.y;
             int newDenumerator = oth.y * els.y;
             return new Fraction(newNumerator, newDenumerator);
         }
+
         public static Fraction Minus(Fraction oth, Fraction els)
         {
             int newNumerator = oth.x * els.y - els.x * oth.y;
             int newDenumerator = oth.y * els.y;
             return new Fraction(newNumerator, newDenumerator);
         }
+
         public static Fraction Multiply(Fraction oth, Fraction els)
         {
             int newNumerator = oth.x * els.x;
             int newDenumerator = oth.y * els.y;
             return new Fraction(newNumerator, newDenumerator);
         }
+
         public static Fraction Division(Fraction oth, Fraction els)
         {
             int newNumerator = oth.x * els.y;
@@ -58,6 +71,7 @@ namespace MyCalcFractionLib
         {
             return "" + x + "/" + y;
         }
+
         public override bool Equals(object obj)
         {
             var frac = obj as Fraction;
@@ -67,6 +81,7 @@ namespace MyCalcFractionLib
             }
             return frac.x == this.x && frac.y == this.y;
         }
+
         public override int GetHashCode()
         {
             int hash = 3;

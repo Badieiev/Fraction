@@ -98,36 +98,47 @@ namespace MyCalcFractionLib.Tests
             //assert
             Assert.AreEqual(expected, c);
         }
-
-        [TestMethod]
-        public void Altogether1071and462return2()
-        {
-            //arrange
-            int x = 1071;
-            int y = 462;
-            int expected = 2;
-
-            //act
-            int actual =Euclid.Altogether(ref x, ref y);
-
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-
+        
         [TestMethod]
         public void GetGCD1071and462return2()
         {
             //arrange
             int x = 1071;
             int y = 462;
-            int expected = 2;
+            int expected = 21;
 
             //act
-            Euclid c = new Euclid();
-            int actual = c.GetGCD(x, y);
+            int actual = Euclid.GetGCD(x, y);
 
             //assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void FindIntegerPatr1071and462return2()
+        {
+            //arrange
+            int expected = 2;
+
+            //act
+            Fraction c = new Fraction(1071,462);
+            int actual = c.FindIntegerPart();
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void FractionInConctructor2and4return1and2()
+        {
+            //arrange
+            Fraction f = new Fraction(2,4);
+
+            //act
+
+            //assert
+            Assert.AreEqual(f.X, 1);
+            Assert.AreEqual(f.Y, 2);
         }
     }
 }
