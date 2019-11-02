@@ -90,11 +90,20 @@ namespace MyCalcFractionLib
             return hash;
         }
 
-        //public Fraction Add(Fraction oth)
-        //{
-        //    int newNumerator = this.x * oth.y + this.y * oth.x;
-        //    int newDenumerator = this.y * oth.y;
-        //    return new Fraction(newNumerator, newDenumerator);
-        //}
+        //другой метод Add
+        public Fraction Add(Fraction oth)
+        {
+            int newNumerator = this.x * oth.y + this.y * oth.x;
+            int newDenumerator = this.y * oth.y;
+            return new Fraction(newNumerator, newDenumerator);
+        }
+
+        //перегружен оператор
+        public static Fraction operator +(Fraction p1, Fraction p2)
+        {
+            int newNumerator = p1.x * p2.y + p2.x * p1.y;
+            int newDenumerator = p1.y * p2.y;
+            return new Fraction(newNumerator, newDenumerator);
+        }
     }
 }

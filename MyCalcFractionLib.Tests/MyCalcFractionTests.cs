@@ -140,5 +140,21 @@ namespace MyCalcFractionLib.Tests
             Assert.AreEqual(f.X, 1);
             Assert.AreEqual(f.Y, 2);
         }
+
+        [TestMethod]//тест перегрузки
+        public void Add2_3and1_2return7_6()
+        {
+            //arrange
+            Fraction expected = new Fraction(7, 6);
+
+
+            //act
+            Fraction a = new Fraction(2, 3);
+            Fraction b = new Fraction(1, 2);
+            Fraction c = a + b;
+
+            //assert
+            Assert.AreEqual(expected, c);
+        }
     }
 }
